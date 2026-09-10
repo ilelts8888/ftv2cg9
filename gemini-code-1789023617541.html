@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675, #6C5CE7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 10px 60px 10px;
+            color: #2d3436;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Patterns Overlay */
+        .bg-patterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23FFFFFF"><path d="M20 10l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/><circle cx="80" cy="30" r="8"/><path d="M100 80c0 5-5 10-10 10s-10-5-10-10 5-10 10-10 10 5 10 10z"/><path d="M30 90l5-10 10 5-5 10z"/><path d="M70 100l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>');
+            animation: floatPatterns 20s linear infinite;
+        }
+
+        @keyframes floatPatterns {
+            from { background-position: 0 0; }
+            to { background-position: 120px 240px; }
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #6C5CE7;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            border: 2px solid #6C5CE7;
+            transform: rotate(-1deg);
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+        }
+
+        /* Important Reminder Box */
+        .reminder-card {
+            background: #FFF9E6;
+            border: 3px solid #FFEAA7;
+            border-left: 8px solid #FDCB6E;
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .reminder-title {
+            color: #D63031;
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .reminder-text {
+            color: #2d3436;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .reminder-highlight {
+            display: block;
+            margin-top: 8px;
+            color: #6C5CE7;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border: 3px solid #F0F0F0;
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .q-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .q-number {
+            background: #6C5CE7;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 4px 14px;
+            border-radius: 12px;
+            box-shadow: 0 3px 0 #4b38b3;
+        }
+
+        .q-type {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #b2bec3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .q-text {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .q-text u {
+            color: #e84393;
+            font-weight: 900;
+            text-decoration-color: #e84393;
+            text-decoration-thickness: 3px;
+            padding: 0 2px;
+        }
+
+        /* Option Grid / Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opt-btn {
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            border-bottom: 5px solid #DEE2E6;
+            border-radius: 18px;
+            padding: 13px 16px;
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #495057;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            outline: none;
+            user-select: none;
+        }
+
+        .opt-btn:hover:not([disabled]) {
+            transform: translateY(-2px) scale(1.01);
+            background: #EDF2F7;
+            border-color: #CBD5E0;
+        }
+
+        .opt-btn:active:not([disabled]) {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+
+        .opt-prefix {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            color: #4A5568;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Correct & Wrong States */
+        .opt-btn.correct {
+            background: #E6F9F0 !important;
+            border-color: #00D26A !important;
+            border-bottom: 5px solid #00A852 !important;
+            color: #007A3D !important;
+        }
+        .opt-btn.correct .opt-prefix {
+            background: #00D26A !important;
+            color: white !important;
+        }
+
+        .opt-btn.wrong {
+            background: #FFEAEA !important;
+            border-color: #FF4757 !important;
+            border-bottom: 5px solid #D63031 !important;
+            color: #C0392B !important;
+            animation: shake 0.4s ease;
+        }
+        .opt-btn.wrong .opt-prefix {
+            background: #FF4757 !important;
+            color: white !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            display: none;
+            margin-top: 18px;
+            background: #F3F0FF;
+            border: 2px dashed #9B51E0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-head {
+            font-weight: 900;
+            color: #6C5CE7;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-section {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #2d3436;
+        }
+
+        .exp-section strong {
+            color: #6C5CE7;
+        }
+
+        .exp-list {
+            margin-left: 12px;
+            list-style: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .exp-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8854C0;
+            font-weight: bold;
+        }
+
+        /* Submit Bar & Modal */
+        .submit-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .submit-btn {
+            background: #00D26A;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 16px 45px;
+            border: none;
+            border-bottom: 6px solid #00A852;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 210, 106, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #00E676;
+        }
+
+        .submit-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid #6C5CE7;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 48px;
+            font-weight: 900;
+            color: #6C5CE7;
+            margin: 10px 0;
+        }
+
+        .modal-msg {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            background: #F8F9FA;
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 5px solid #6C5CE7;
+        }
+
+        .close-modal-btn {
+            background: #6C5CE7;
+            color: white;
+            border: none;
+            border-bottom: 4px solid #4b38b3;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="teacher-badge">👩‍🏫 Giáo viên tạo: Ms Lê Hằng English</div>
+            <h1 class="main-title">🎯 BÀI KIỂM TRA TIẾNG ANH TƯƠNG TÁC</h1>
+        </header>
+
+        <div class="reminder-card">
+            <div class="reminder-title">
+                <span>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</span>
+            </div>
+            <div class="reminder-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="reminder-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI THI 🚀</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <div style="font-size: 50px;">🏆</div>
+            <h2 style="font-weight: 900; color:#2d3436;">KẾT QUẢ BÀI LÀM</h2>
+            <div class="modal-score" id="score-text">0 / 20</div>
+            <div class="modal-msg" id="comment-text">...</div>
+            <button class="close-modal-btn" onclick="closeModal()">ĐÓNG VÀ XEM LẠI BÀI 📝</button>
+        </div>
+    </div>
+
+    <script>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                if (type === 'correct') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+                    osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                }
+            } catch (e) {
+                console.log("Audio waiting for user gesture", e);
+            }
+        }
+
+        const rawQuestions = [
+            // Question 5
+            {
+                type: "GRAMMAR - PAST CONTINUOUS TENSE",
+                question: "Question 5. Our team ________ hard all week because we had an important match.",
+                options: [
+                    { text: "was training", correct: true },
+                    { text: "train", correct: false },
+                    { text: "will train", correct: false },
+                    { text: "is training", correct: false }
+                ],
+                explanation: {
+                    translation: "Đội của chúng tôi đã tập luyện chăm chỉ suốt cả tuần vì chúng tôi có một trận đấu quan trọng.",
+                    optionsDict: [
+                        "A. was training (Quá khứ tiếp diễn - nhấn mạnh sự việc diễn ra liên tục trong một khoảng thời gian ở quá khứ)",
+                        "B. train (Hiện tại đơn)",
+                        "C. will train (Tương lai đơn)",
+                        "D. is training (Hiện tại tiếp diễn)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì vế nguyên nhân 'because we had an important match' chia ở quá khứ đơn ('had'), nên hành động tập luyện kéo dài suốt cả tuần trong quá khứ phải chia ở thì Quá khứ tiếp diễn.",
+                    whyIncorrect: "B, C, D sai thì (dùng hiện tại hoặc tương lai trong khi bối cảnh sự việc đã diễn ra trong quá khứ)."
+                }
+            },
+            // Question 6
+            {
+                type: "GRAMMAR - WISH CLAUSES",
+                question: "Question 6. The kids wish they ________ a treehouse in their backyard.",
+                options: [
+                    { text: "can have", correct: false },
+                    { text: "will have", correct: false },
+                    { text: "could have", correct: true },
+                    { text: "have", correct: false }
+                ],
+                explanation: {
+                    translation: "Bọn trẻ ước rằng chúng có thể có một ngôi nhà trên cây ở sân sau nhà mình.",
+                    optionsDict: [
+                        "A. can have (Chưa lùi thì)",
+                        "B. will have (Tương lai đơn)",
+                        "C. could have (Đúng dạng lùi thì của 'can' trong câu ước)",
+                        "D. have (Hiện tại đơn)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì cấu trúc câu ước trái với thực tế ở hiện tại: `S + wish + S + could + V-bare` hoặc `S + wish + S + V2/V-ed`.",
+                    whyIncorrect: "A, B, D chưa lùi thì theo đúng quy tắc bắt buộc của câu ước (Wish clause)."
+                }
+            },
+            // Question 7
+            {
+                type: "VOCABULARY - WORD FORMATION (NOUNS)",
+                question: "Question 7. During the trip to the zoo, I made an ________ about how monkeys play.",
+                options: [
+                    { text: "observe", correct: false },
+                    { text: "observation", correct: true },
+                    { text: "observer", correct: false },
+                    { text: "observing", correct: false }
+                ],
+                explanation: {
+                    translation: "Trong chuyến đi chơi sở thú, tôi đã thực hiện một sự quan sát về cách những con khỉ chơi đùa.",
+                    optionsDict: [
+                        "A. observe (v): quan sát",
+                        "B. observation (n): sự quan sát (cụm: make an observation)",
+                        "C. observer (n): người quan sát",
+                        "D. observing (V-ing)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì đứng sau mạo từ 'an' cần một Danh từ chỉ sự việc/hành động. Ta có cụm từ cố định 'make an observation' (tiến hành quan sát).",
+                    whyIncorrect: "A là động từ; C là danh từ chỉ người (người quan sát) không khớp với động từ 'make'; D là dạng V-ing."
+                }
+            },
+            // Question 8
+            {
+                type: "COMMUNICATION / DIALOGUE",
+                question: "Question 8. Daniel: \"What did you think of the film?\" - Nancy: \"________\"",
+                options: [
+                    { text: "I thought a lot about it.", correct: false },
+                    { text: "It had such a wonderful story.", correct: true },
+                    { text: "I'd love to come with you.", correct: false },
+                    { text: "We could see another film.", correct: false }
+                ],
+                explanation: {
+                    translation: "Daniel: \"Bạn nghĩ gì về bộ phim?\" - Nancy: \"Nó có một câu chuyện rất tuyệt vời.\"",
+                    optionsDict: [
+                        "A. I thought a lot about it. (Tớ đã suy nghĩ rất nhiều về nó - Không nêu cảm nhận cụ thể)",
+                        "B. It had such a wonderful story. (Nó có một cốt truyện rất tuyệt vời - Lời nhận xét bộ phim)",
+                        "C. I'd love to come with you. (Tớ rất muốn đi cùng cậu - Đáp lại lời rủ rê)",
+                        "D. We could see another film. (Chúng ta có thể xem phim khác - Lời đề xuất)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì câu hỏi \"What did you think of...?\" dùng để hỏi ý kiến/cảm nhận về một bộ phim, câu B đưa ra lời nhận xét cụ thể về cốt truyện bộ phim.",
+                    whyIncorrect: "A, C, D không đáp ứng đúng ngữ cảnh trả lời cho câu hỏi xin ý kiến đánh giá."
+                }
+            },
+            // Question 9
+            {
+                type: "VOCABULARY - IDIOMS & COLLOCATIONS",
+                question: "Question 9. The teacher encouraged her students to engage in active learning rather than relying solely on learning ________.",
+                options: [
+                    { text: "by rote", correct: true },
+                    { text: "by accident", correct: false },
+                    { text: "thinkingly", correct: false },
+                    { text: "mindfully", correct: false }
+                ],
+                explanation: {
+                    translation: "Giáo viên khuyến khích học sinh tham gia vào phương pháp học chủ động thay vì chỉ phụ thuộc vào việc học thuộc lòng máy móc (học vẹt).",
+                    optionsDict: [
+                        "A. by rote (cụm: learn by rote = học thuộc lòng máy móc, học vẹt)",
+                        "B. by accident (vô tình, tình cờ)",
+                        "C. thinkingly (một cách suy nghĩ)",
+                        "D. mindfully (một cách chú tâm)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì thành ngữ 'learn by rote' nghĩa là học thuộc lòng máy móc/học vẹt, mang nét nghĩa đối lập hoàn hảo với 'active learning' (học chủ động).",
+                    whyIncorrect: "B, C, D không tạo thành cụm từ cố định chỉ việc 'học vẹt' trong tiếng Anh."
+                }
+            },
+            // Question 10
+            {
+                type: "VOCABULARY - NOUN CHOICE",
+                question: "Question 10. I forgot my lunch at home, so I'll get a ________ from the nearest restaurant.",
+                options: [
+                    { text: "dine-in", correct: false },
+                    { text: "takeaway", correct: true },
+                    { text: "food", correct: false },
+                    { text: "drinks", correct: false }
+                ],
+                explanation: {
+                    translation: "Tớ quên mang bữa trưa ở nhà, nên tớ sẽ mua một phần đồ ăn mang về từ nhà hàng gần nhất.",
+                    optionsDict: [
+                        "A. dine-in (n/adj): việc ăn tại quán",
+                        "B. takeaway (n): đồ ăn mua mang về (cụm: get a takeaway)",
+                        "C. food (danh từ không đếm được - không đứng sau mạo từ 'a')",
+                        "D. drinks (danh từ số nhiều - không đứng sau mạo từ 'a')"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì 'takeaway' là danh từ đếm được chỉ suất ăn mang về, phù hợp với mạo từ 'a' đứng trước ('get a takeaway').",
+                    whyIncorrect: "A sai nghĩa (dine-in là ăn tại chỗ); C 'food' không đếm được nên không dùng 'a food'; D 'drinks' là số nhiều."
+                }
+            },
+            // Question 11
+            {
+                type: "VOCABULARY - ADJECTIVES IN CONTEXT",
+                question: "Question 11. Our school offers ________ extracurricular activities, including sports, music, and art.",
+                options: [
+                    { text: "private", correct: false },
+                    { text: "personal", correct: false },
+                    { text: "family-oriented", correct: false },
+                    { text: "various", correct: true }
+                ],
+                explanation: {
+                    translation: "Trường chúng tôi cung cấp nhiều loại hoạt động ngoại khóa khác nhau, bao gồm thể thao, âm nhạc và nghệ thuật.",
+                    optionsDict: [
+                        "A. private (adj): tư nhân, riêng tư",
+                        "B. personal (adj): cá nhân",
+                        "C. family-oriented (adj): hướng về gia đình",
+                        "D. various (adj): đa dạng, nhiều loại khác nhau"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì phía sau liệt kê một danh sách gồm nhiều lĩnh vực khác nhau (thể thao, âm nhạc, nghệ thuật), nên dùng tính từ 'various' (đa dạng, nhiều loại).",
+                    whyIncorrect: "A, B, C không hợp ngữ nghĩa khi miêu tả danh sách tổng hợp gồm nhiều hoạt động phong phú."
+                }
+            },
+            // Question 12
+            {
+                type: "GRAMMAR - VERB PATTERNS (RECOMMEND)",
+                question: "Question 12. They recommend ________ the museum on Saturdays when it's less crowded.",
+                options: [
+                    { text: "to visit", correct: false },
+                    { text: "to visiting", correct: false },
+                    { text: "visiting", correct: true },
+                    { text: "visited", correct: false }
+                ],
+                explanation: {
+                    translation: "Họ khuyên nên đi thăm bảo tàng vào các ngày Thứ Bảy khi nơi đó bớt đông đúc hơn.",
+                    optionsDict: [
+                        "A. to visit (to-V)",
+                        "B. to visiting (Sai ngữ pháp)",
+                        "C. visiting (Danh động từ V-ing)",
+                        "D. visited (V-ed)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì theo cấu trúc động từ: `recommend + V-ing` (khuyên nên làm việc gì đó).",
+                    whyIncorrect: "A, B, D vi phạm cấu trúc ngữ pháp chuẩn đứng sau động từ 'recommend'."
+                }
+            },
+            // Question 13
+            {
+                type: "ANNOUNCEMENT - PREPOSITIONS",
+                question: "Question 13. Store dry foods (13)________ airtight containers to keep them fresh.",
+                options: [
+                    { text: "in", correct: true },
+                    { text: "on", correct: false },
+                    { text: "with", correct: false },
+                    { text: "over", correct: false }
+                ],
+                explanation: {
+                    translation: "Bảo quản thực phẩm khô trong các hộp kín khí để giữ cho chúng luôn tươi ngon.",
+                    optionsDict: [
+                        "A. in (trong - cụm: store something in containers)",
+                        "B. on (trên)",
+                        "C. with (với)",
+                        "D. over (bên trên)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì giới từ 'in' đi với 'containers' dùng để chỉ việc lưu trữ/đặt vật phẩm bên trong một đồ vật chứa ('store in containers').",
+                    whyIncorrect: "B, C, D dùng sai giới từ chỉ không gian chứa đựng bên trong đồ vật."
+                }
+            },
+            // Question 14
+            {
+                type: "ANNOUNCEMENT - IMPERATIVE VERBS",
+                question: "Question 14. (14)________ your pantry regularly and remove expired items.",
+                options: [
+                    { text: "Check", correct: true },
+                    { text: "Buy", correct: false },
+                    { text: "Make", correct: false },
+                    { text: "Fill", correct: false }
+                ],
+                explanation: {
+                    translation: "Hãy kiểm tra tủ đồ ăn của bạn thường xuyên và loại bỏ các mặt hàng đã hết hạn.",
+                    optionsDict: [
+                        "A. Check (v: kiểm tra, rà soát)",
+                        "B. Buy (v: mua)",
+                        "C. Make (v: làm, tạo)",
+                        "D. Fill (v: lấp đầy)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì câu đưa ra lời khuyên/mệnh lệnh hành động rà soát tủ đồ ăn ('Check your pantry') để phát hiện đồ hỏng/hết hạn.",
+                    whyIncorrect: "B, C, D không đúng ngữ nghĩa của mẹo sắp xếp dọn dẹp tủ đồ ăn."
+                }
+            },
+            // Question 15
+            {
+                type: "ANNOUNCEMENT - COLLOCATIONS & PASSIVE",
+                question: "Question 15. Make sure all knives and sharp objects are (15)________ out of reach of children.",
+                options: [
+                    { text: "placed", correct: false },
+                    { text: "hidden", correct: false },
+                    { text: "kept", correct: true },
+                    { text: "found", correct: false }
+                ],
+                explanation: {
+                    translation: "Hãy đảm bảo rằng tất cả dao và các vật sắc nhọn được giữ ngoài tầm tay trẻ em.",
+                    optionsDict: [
+                        "A. placed (được đặt)",
+                        "B. hidden (được giấu)",
+                        "C. kept (được giữ - cụm: keep out of reach of children)",
+                        "D. found (được tìm thấy)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì cụm từ cố định cảnh báo an toàn là 'keep something out of reach of children' (giữ cái gì ngoài tầm tay trẻ em). Ở dạng bị động: 'are kept out of reach of children'.",
+                    whyIncorrect: "A, B, D không tạo thành cụm từ cố định cảnh báo an toàn tiêu chuẩn."
+                }
+            },
+            // Question 16
+            {
+                type: "ANNOUNCEMENT - IMPERATIVE VERBS",
+                question: "Question 16. (16)________ a weekly schedule to clean the fridge and cabinets.",
+                options: [
+                    { text: "Write", correct: false },
+                    { text: "Create", correct: true },
+                    { text: "Forget", correct: false },
+                    { text: "Lose", correct: false }
+                ],
+                explanation: {
+                    translation: "Hãy tạo một lịch trình hàng tuần để lau dọn tủ lạnh và các tủ bếp.",
+                    optionsDict: [
+                        "A. Write (viết)",
+                        "B. Create (tạo ra, lập - Create a schedule)",
+                        "C. Forget (quên)",
+                        "D. Lose (mất)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cụm kết hợp từ tự nhiên chỉ việc lập kế hoạch/lịch trình là 'create a schedule' (tạo/lập một lịch trình).",
+                    whyIncorrect: "A ít phổ biến hơn khi nói về việc lập lịch trình làm việc hệ thống; C và D mang nghĩa tiêu cực trái ngược với lời khuyên."
+                }
+            },
+            // Question 17
+            {
+                type: "TEXT ORDERING - LOGICAL SEQUENCE",
+                question: "Question 17. Put the sentences (a-c) in the correct order, then fill in the blank to make a logical text.<br><em>\"I think children should do housework for a number of reasons. ________\"</em><br>a. Second, children can learn to take responsibility when they do housework. They know that they have to do something even though they don't like to do it.<br>b. They will certainly need those skills in their lives later, when they start their own families.<br>c. First, doing housework helps children develop some important life skills such as doing the laundry, cleaning the house or taking care of others.",
+                options: [
+                    { text: "b - c - a", correct: false },
+                    { text: "c - a - b", correct: false },
+                    { text: "c - b - a", correct: true },
+                    { text: "b - a - c", correct: false }
+                ],
+                explanation: {
+                    translation: "Sắp xếp các câu (a-c) để tạo thành đoạn văn hoàn chỉnh về lý do trẻ em nên làm việc nhà:",
+                    optionsDict: [
+                        "A. b - c - a",
+                        "B. c - a - b",
+                        "C. c - b - a (Trình tự logic: Lý do 1 -> Giải thích thêm cho lý do 1 -> Lý do 2)",
+                        "D. b - a - c"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì trình tự mạch tư duy cực kỳ chặt chẽ:<br>1. (c) 'First...' Đưa ra lý do thứ nhất (giúp trẻ phát triển kỹ năng sống 'life skills').<br>2. (b) 'They will certainly need those skills...' Bổ sung làm rõ cho lý do 1 (cụm 'those skills' nối trực tiếp với 'life skills' ở câu c).<br>3. (a) 'Second...' Mới chuyển sang lý do thứ hai (học tinh thần trách nhiệm).",
+                    whyIncorrect: "A, B, D làm ngắt kết nối giữa 'life skills' (câu c) và đại từ thay thế 'those skills' (câu b), hoặc làm đảo lộn các từ nối thứ tự 'First... Second...'."
+                }
+            },
+            // Question 18
+            {
+                type: "TEXT ENDING - CONCLUSION",
+                question: "Question 18. Choose the sentence that can end the text (in Question 17) most appropriately:",
+                options: [
+                    { text: "So doing housework is really good for children and I believe that they should do it.", correct: true },
+                    { text: "Housework can teach children to care for others.", correct: false },
+                    { text: "Learning to do laundry is one of the skills children can gain from housework.", correct: false },
+                    { text: "Therefore, children should do housework to learn how to manage a household.", correct: false }
+                ],
+                explanation: {
+                    translation: "Chọn câu kết thúc bài viết (ở Câu 17) một cách phù hợp nhất:",
+                    optionsDict: [
+                        "A. Vì vậy việc làm nhà thực sự tốt cho trẻ em và tôi tin rằng chúng nên làm nó. (Câu đúc kết toàn diện)",
+                        "B. Việc nhà dạy trẻ biết quan tâm người khác (Ý nhỏ lẻ)",
+                        "C. Học giặt đồ là một trong các kỹ năng (Ví dụ quá chi tiết)",
+                        "D. Do đó trẻ nên làm việc nhà để học cách quản lý gia đình (Lệch chủ đề chính)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì câu A đúc kết lại toàn bộ các ý đã nêu và khẳng định lại quan điểm ban đầu ở mở bài (\"I think children should do housework...\").",
+                    whyIncorrect: "B và C chỉ nhắc lại một chi tiết nhỏ trong bài; D mở rộng sang khái niệm quản lý gia đình chưa được nhắc đến."
+                }
+            },
+            // Question 19
+            {
+                type: "READING CLOZE - CONJUNCTIONS",
+                question: "Question 19. By 500 CE, there was a language called English, (19)________ only about thirty thousand people spoke it.",
+                options: [
+                    { text: "and", correct: false },
+                    { text: "but", correct: true },
+                    { text: "because", correct: false },
+                    { text: "so", correct: false }
+                ],
+                explanation: {
+                    translation: "Đến năm 500 SCN, đã có một ngôn ngữ gọi là tiếng Anh, nhưng chỉ có khoảng 30.000 người sử dụng nó.",
+                    optionsDict: [
+                        "A. and (và - bổ sung ý)",
+                        "B. but (nhưng - chỉ sự tương phản)",
+                        "C. because (vì - chỉ nguyên nhân)",
+                        "D. so (cho nên - chỉ kết quả)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì giữa hai vế câu có mối quan hệ tương phản: Đã xuất hiện một ngôn ngữ chính thức nhưng số lượng người nói lại rất ít (chỉ 30.000 người).",
+                    whyIncorrect: "A, C, D không thể hiện được sự đối lập logic giữa hai vế."
+                }
+            },
+            // Question 20
+            {
+                type: "READING CLOZE - RELATIVE CLAUSES",
+                question: "Question 20. Most of them lived in Britain, (20)________ England, Scotland and Wales.",
+                options: [
+                    { text: "which is the country of", correct: true },
+                    { text: "that is the country in", correct: false },
+                    { text: "which are the country of", correct: false },
+                    { text: "where was the country on", correct: false }
+                ],
+                explanation: {
+                    translation: "Hầu hết họ sống ở Anh (Britain), nơi là quốc gia bao gồm Nước Anh, Xứ Scotland và Xứ Wales.",
+                    optionsDict: [
+                        "A. which is the country of (Chủ ngữ số ít 'Britain' -> dùng 'which is')",
+                        "B. that is... (Không dùng đại từ 'that' sau dấu phẩy trong mệnh đề quan hệ)",
+                        "C. which are... (Chia số nhiều 'are' là sai với danh từ 'Britain')",
+                        "D. where was... (Sai cấu trúc mệnh đề quan hệ)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì mệnh đề quan hệ không xác định đứng sau dấu phẩy bổ nghĩa cho danh từ số ít 'Britain' phải dùng `which + is`.",
+                    whyIncorrect: "B dùng 'that' sau dấu phẩy là vi phạm quy tắc ngữ pháp; C chia động từ 'are' số nhiều sai; D dùng 'where' không làm chủ ngữ cho động từ phía sau."
+                }
+            },
+            // Question 21
+            {
+                type: "READING CLOZE - SUBJECT-VERB AGREEMENT & PRONOUNS",
+                question: "Question 21. Today, about 375 million people (21)________ first language.",
+                options: [
+                    { text: "speak English as a", correct: false },
+                    { text: "speaks English as the", correct: false },
+                    { text: "speak English as their", correct: true },
+                    { text: "speak English like its", correct: false }
+                ],
+                explanation: {
+                    translation: "Ngày nay, khoảng 375 triệu người nói tiếng Anh như là ngôn ngữ mẹ đẻ của họ.",
+                    optionsDict: [
+                        "A. speak English as a",
+                        "B. speaks English as the (Chia động từ số ít 'speaks' là sai)",
+                        "C. speak English as their (Đúng động từ số nhiều và tính từ sở hữu 'their')",
+                        "D. speak English like its (Dùng tính từ sở hữu 'its' số ít là sai)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì chủ ngữ 'about 375 million people' là danh từ số nhiều nên động từ chia nguyên mẫu 'speak'. Tính từ sở hữu 'their' thay thế chính xác cho 375 triệu người này.",
+                    whyIncorrect: "B chia động từ số ít 'speaks' sai; A dùng mạo từ 'a' không thể hiện được ý sở hữu ngôn ngữ mẹ đẻ; D dùng 'its' sai tính từ sở hữu số ít."
+                }
+            },
+            // Question 22
+            {
+                type: "READING CLOZE - VERB COLLOCATIONS",
+                question: "Question 22. ...and perhaps two billion use it in some way, for example, to buy or (22)________ things or to communicate on the internet.",
+                options: [
+                    { text: "use", correct: false },
+                    { text: "get", correct: false },
+                    { text: "sell", correct: true },
+                    { text: "have", correct: false }
+                ],
+                explanation: {
+                    translation: "...và khoảng 2 tỷ người dùng nó theo cách nào đó, ví dụ để mua hoặc bán hàng hóa hoặc giao tiếp trên internet.",
+                    optionsDict: [
+                        "A. use (sử dụng)",
+                        "B. get (lấy, nhận)",
+                        "C. sell (bán - cặp từ: buy or sell)",
+                        "D. have (có)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì trong giao dịch thương mại, cặp từ đối lập đi liền với nhau mang tính song hành là 'buy or sell things' (mua hoặc bán hàng hóa).",
+                    whyIncorrect: "A, B, D không tạo thành cặp từ đối lập song hành tự nhiên 'buy or...'."
+                }
+            },
+            // Question 23
+            {
+                type: "READING CLOZE - NOUN PHRASES",
+                question: "Question 23. The internet is, perhaps, (23)________ for the increase in the use of English in the last 20 years.",
+                options: [
+                    { text: "the main why", correct: false },
+                    { text: "the main reason", correct: true },
+                    { text: "main results", correct: false },
+                    { text: "a main way", correct: false }
+                ],
+                explanation: {
+                    translation: "Internet có lẽ là lý do chính cho sự gia tăng việc sử dụng tiếng Anh trong 20 năm qua.",
+                    optionsDict: [
+                        "A. the main why (Sai cấu trúc ngữ pháp)",
+                        "B. the main reason (cụm: the main reason for something = lý do chính cho điều gì)",
+                        "C. main results (n số nhiều - sai với động từ số ít 'is')",
+                        "D. a main way (phương cách chính - không đi với 'for the increase')"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cụm danh từ cố định 'the main reason for something' nghĩa là nguyên nhân/lý do chính cho sự việc gì đó.",
+                    whyIncorrect: "A sai ngữ pháp; C chia số nhiều không hợp với 'is'; D dùng 'way for' không thể hiện đúng quan hệ nguyên nhân - kết quả."
+                }
+            },
+            // Question 24
+            {
+                type: "READING CLOZE - PREPOSITIONS / PERCENTAGES",
+                question: "Question 24. Now, 80% of all communication through the internet is in English, and 95% (24)________ all articles for science magazines are in English.",
+                options: [
+                    { text: "of", correct: true },
+                    { text: "from", correct: false },
+                    { text: "for", correct: false },
+                    { text: "with", correct: false }
+                ],
+                explanation: {
+                    translation: "Hiện nay, 80% mọi giao tiếp qua internet là bằng tiếng Anh, và 95% trong số tất cả các bài báo tạp chí khoa học là bằng tiếng Anh.",
+                    optionsDict: [
+                        "A. of (cấu trúc: percentage + of + noun)",
+                        "B. from (từ)",
+                        "C. for (cho)",
+                        "D. with (với)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì theo quy tắc ngữ pháp diễn tả tỷ lệ phần trăm: `[Percentage] + OF + [Noun]` (95% of all articles = 95% trong số tất cả bài báo).",
+                    whyIncorrect: "B, C, D dùng sai giới từ đi theo sau tỷ lệ phần trăm."
+                }
+            }
+        ];
+
+        let questions = [];
+
+        function shuffleArray(array) {
+            let cur = array.slice();
+            for (let i = cur.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cur[i], cur[j]] = [cur[j], cur[i]];
+            }
+            return cur;
+        }
+
+        function initQuiz() {
+            questions = rawQuestions.map(q => {
+                let shuffledOpts = shuffleArray(q.options);
+                return {
+                    ...q,
+                    shuffledOptions: shuffledOpts,
+                    userAnswerIndex: null
+                };
+            });
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                const optionsHTML = q.shuffledOptions.map((opt, optIdx) => {
+                    const letters = ['A', 'B', 'C', 'D'];
+                    return `
+                        <button class="opt-btn" id="opt-${idx}-${optIdx}" onclick="selectAnswer(${idx}, ${optIdx})">
+                            <span class="opt-prefix">${letters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                }).join('');
+
+                const exp = q.explanation;
+                const expDictHTML = exp.optionsDict.map(item => `<li>${item}</li>`).join('');
+
+                card.innerHTML = `
+                    <div class="q-header">
+                        <span class="q-number">Câu ${idx + 1} / ${questions.length}</span>
+                        <span class="q-type">${q.type}</span>
+                    </div>
+                    <div class="q-text">${q.question}</div>
+                    <div class="options-grid">
+                        ${optionsHTML}
+                    </div>
+                    <div class="explanation-box" id="exp-${idx}">
+                        <div class="exp-head">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</div>
+                        <div class="exp-section"><strong>1. Dịch câu hỏi:</strong> ${exp.translation}</div>
+                        <div class="exp-section">
+                            <strong>2. Phân tích 4 đáp án:</strong>
+                            <ul class="exp-list">${expDictHTML}</ul>
+                        </div>
+                        <div class="exp-section"><strong>3. Tại sao chọn đáp án này?</strong> ${exp.whyCorrect}</div>
+                        <div class="exp-section"><strong>4. Tại sao các đáp án khác sai?</strong> ${exp.whyIncorrect}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectAnswer(qIdx, optIdx) {
+            const q = questions[qIdx];
+            if (q.userAnswerIndex !== null) return;
+
+            q.userAnswerIndex = optIdx;
+            const selectedOpt = q.shuffledOptions[optIdx];
+            const isCorrect = selectedOpt.correct;
+
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${optIdx}`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                triggerConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                playSound('wrong');
+
+                q.shuffledOptions.forEach((o, i) => {
+                    if (o.correct) {
+                        document.getElementById(`opt-${qIdx}-${i}`).classList.add('correct');
+                    }
+                });
+            }
+
+            q.shuffledOptions.forEach((_, i) => {
+                const b = document.getElementById(`opt-${qIdx}-${i}`);
+                b.disabled = true;
+                b.style.cursor = 'default';
+            });
+
+            document.getElementById(`exp-${qIdx}`).classList.add('show');
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+
+            questions.forEach(q => {
+                if (q.userAnswerIndex !== null && q.shuffledOptions[q.userAnswerIndex].correct) {
+                    correctCount++;
+                }
+            });
+
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${total} (${percentage}%)`;
+
+            let comment = "";
+            if (percentage < 50) {
+                comment = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage <= 80) {
+                comment = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else {
+                comment = "Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!";
+                triggerConfetti();
+            }
+
+            document.getElementById('comment-text').innerText = comment;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#8854C0', '#FDCB6E', '#00C9A7', '#FF7675', '#6C5CE7', '#00D26A'];
+
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.7) * 14,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: 90
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    if (p.life > 0) {
+                        alive = true;
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.4;
+                        p.life -= 2;
+                        ctx.fillStyle = p.color;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+
+                if (alive) requestAnimationFrame(animate);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            animate();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
